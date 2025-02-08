@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            padding: 20px;
+        }
+        #mensaje {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        #contenedor-imagen {
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div contenteditable="true" id="mensaje">¿Me permitiría ser su San Valentín?</div>
+    <div id="contenedor-imagen">
+        <input type="file" id="subirImagen" accept="image/*">
+        <br>
+        <img id="imagenSeleccionada" src="" alt="Tu imagen aparecerá aquí">
+    </div>
+    <button onclick="respuesta(true)">Sí</button>
+    <button id="botonNo" onmouseover="moverBoton()">No</button>
+
+    <script>
+        document.getElementById('subirImagen').addEventListener('change', function(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                document.getElementById('imagenSeleccionada').src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        function respuesta(acepta) {
+            if (acepta) {
+                alert('¡Sabía que dirías que sí! 💖');
+            }
+        }
+
+        function moverBoton() {
+            const botonNo = document.getElementById('botonNo');
+            const maxX = window.innerWidth - botonNo.offsetWidth;
+            const maxY = window.innerHeight - botonNo.offsetHeight;
+            botonNo.style.position = "absolute";
+            botonNo.style.left = Math.random() * maxX + "px";
+            botonNo.style.top = Math.random() * maxY + "px";
+        }
+    </script>
+</body>
+</html>
