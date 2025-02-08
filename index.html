@@ -35,22 +35,12 @@
 <body>
     <div contenteditable="true" id="mensaje">¿Me permitiría ser su San Valentín?</div>
     <div id="contenedor-imagen">
-        <input type="file" id="subirImagen" accept="image/*">
-        <br>
-        <img id="imagenSeleccionada" src="" alt="Tu imagen aparecerá aquí">
+        <img id="imagenSeleccionada" src="Captura_de_pantalla_2025-01-16_022909.png" alt="Imagen predeterminada">
     </div>
     <button onclick="respuesta(true)">Sí</button>
     <button id="botonNo" onmouseover="moverBoton()">No</button>
 
     <script>
-        document.getElementById('subirImagen').addEventListener('change', function(event) {
-            const reader = new FileReader();
-            reader.onload = function() {
-                document.getElementById('imagenSeleccionada').src = reader.result;
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        });
-
         function respuesta(acepta) {
             if (acepta) {
                 alert('¡Sabía que dirías que sí! 💖');
